@@ -1,0 +1,25 @@
+{
+    "name": "lit/media",
+    "description": "媒体处理",
+    "authors": [
+        {
+            "name": "litong",
+            "email": "ghostong@126.com"
+        }
+    ],
+    "keywords": [
+        "Blur",
+        "虚化"
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "php-ffmpeg/php-ffmpeg": "^0.14"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [],
+        "psr-4": {
+            "Lit\\Media\\": "src"
+        }
+    }
+}
