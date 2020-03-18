@@ -56,8 +56,9 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
      * 视频尺寸
      */
     private function videoSize () {
-        $dimensions = $this->video->getStreams()->videos()->first()->getDimensions();
-        return [ "width" => $dimensions->getWidth(), "height" => $dimensions->getHeight() ];
+        $width = $this->video->getStreams()->videos()->first()->get("width");
+        $height  = $this->video->getStreams()->videos()->first()->get("height");
+        return [ "width" => $width, "height" => $height ];
     }
 
     /**

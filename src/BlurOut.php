@@ -28,6 +28,8 @@ class BlurOut {
                 $this->resource = new BlurOutImage( $resourcePath );
                 break;
             case "mp4" :
+            case "avi" :
+            case "flv" :
                 require_once (__DIR__.DIRECTORY_SEPARATOR."BlurOut".DIRECTORY_SEPARATOR."BlurOutVideo.php");
                 $this->resource = new BlurOutVideo( $resourcePath );
                 break;
