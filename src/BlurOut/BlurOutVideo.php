@@ -39,7 +39,7 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
             $holdSize = $this->getHoldSize($videoSize["width"], $videoSize["height"], $cropSize["width"], $cropSize["height"]); //获得需要比例最小包容尺寸
             $this->thumbnailVideo($holdSize["width"], $holdSize["height"]); //缩放视频
 
-            $this->blurVideo(10,3); //虚化
+            $this->blurVideo(20,5); //虚化
 
             $this->video->filters()->custom(implode(",",$this->customA))->synchronize();
 
