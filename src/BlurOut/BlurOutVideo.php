@@ -9,8 +9,9 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
 
     private $video = null;
 
-    protected $customA = array();
-    protected $customB = array();
+    private $allowExtensions = ["mp4","avi","flv","wmv"];
+
+    protected $custom = array();
     protected $videoFile = "";
 
     function __construct( $videoFile ){
@@ -41,7 +42,7 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
 
             $this->blurVideo(20,5); //虚化
 
-            $this->video->filters()->custom(implode(",",$this->customA))->synchronize();
+            $this->video->filters()->custom(implode(",",$this->custom))->synchronize();
 
             $compositePosition = $this->getCompositePosition($videoSize["width"], $videoSize["height"], $holdSize["width"], $holdSize["height"]);//获取视频拼贴位置
             $this->compositeVideo( $compositePosition["x"], $compositePosition["y"] ); //粘贴原视频
@@ -69,7 +70,7 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
      * @param $y int 裁切坐标点Y轴
      */
     private function cropVideo ( $width, $height, $x, $y ) {
-        $this->customA[] = "crop={$width}:{$height}:{$x}:$y";
+        $this->custom[] = "crop={$width}:{$height}:{$x}:$y";
     }
 
     /**
@@ -88,7 +89,7 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
     private function thumbnailVideo( $width, $height ){
         $width = intval($width/2) * 2;
         $height = intval($height/2) * 2;
-        $this->customA[] = "scale={$width}:{$height}";
+        $this->custom[] = "scale={$width}:{$height}";
     }
 
     /**
@@ -110,7 +111,16 @@ class BlurOutVideo extends BlurOutBase implements BlurOutInterface {
      * @param $sigma int 偏差
      */
     private function blurVideo( $radius, $sigma ) {
-        $this->customA[] = "boxblur={$radius}:{$sigma}";
+        $this->custom[] = "boxblur={$radius}:{$sigma}";
+    }
+
+    /**
+     * 是否允许的扩展名
+     * @param $ext string 扩展名
+     * @return bool
+     */
+    public function isAllowExtensions ( $ext ) {
+        return in_array($ext,$this->allowExtensions);
     }
 
 }

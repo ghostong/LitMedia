@@ -6,4 +6,6 @@ interface BlurOutInterface {
 
     function blurOut ( $ratioWidth, $ratioHeight, $saveFile );
 
+    function isAllowExtensions ( $ext ) ;
+
 }

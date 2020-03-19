@@ -9,6 +9,8 @@ class BlurOutImage extends BlurOutBase implements BlurOutInterface {
 
     private $image = null;
 
+    private $allowExtensions = ["jpg","jpeg","png"];
+
     function __construct( $imageFile ){
         $this->image = new \Imagick($imageFile);
     }
@@ -96,6 +98,15 @@ class BlurOutImage extends BlurOutBase implements BlurOutInterface {
      */
     private function thumbnailImage( $width, $height ){
         $this->image->thumbnailImage( $width, $height );
+    }
+
+    /**
+     * 是否允许的扩展名
+     * @param $ext string 扩展名
+     * @return bool
+     */
+    public function isAllowExtensions ( $ext ) {
+        return in_array($ext,$this->allowExtensions);
     }
 
 }

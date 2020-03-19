@@ -10,7 +10,16 @@ class BlurOut {
         $this->factory( $resourcePath );
     }
 
-    public function exec ( $ratioWidth, $ratioHeight, $saveFile ) {
+    /**
+     * @param $ratioWidth int 比例宽
+     * @param $ratioHeight int 比例高
+     * @param $saveFile string 输出文件保存位置
+     * @throws \Exception
+     */
+    public function exec ($ratioWidth, $ratioHeight, $saveFile ) {
+        if ( !$this->resource->isAllowExtensions( $this->getFormat($saveFile) ) ) {
+            throw new \Exception("Unsupported out put file");
+        }
         $this->resource->blurOut( $ratioWidth, $ratioHeight, $saveFile );
     }
 
@@ -45,7 +54,7 @@ class BlurOut {
 
     /**
      * 获取图片格式
-     * @param $resourcePath 图片路径/名称
+     * @param $resourcePath string 图片路径/名称
      * @throws \Exception 不支持的文件异常
      * @return string 文件扩展名
      */
