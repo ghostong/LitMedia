@@ -48,8 +48,7 @@ class BlurOutImage extends BlurOutBase implements BlurOutInterface {
      * 图片尺寸
      */
     private function imageSize() {
-        $page = $this->image->getImagePage();
-        return [ "width" => $page["width"], "height" => $page["height"] ];
+        return [ "width" => $this->image->getImageWidth(), "height" => $this->image->getImageHeight() ];
     }
 
     /**
