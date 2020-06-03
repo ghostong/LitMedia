@@ -12,6 +12,11 @@ apt install php-imagick -y
 apt install ffmpeg -y
 ````
 
+### Demo
+````
+https://github.com/ghostong/help/blob/master/LitMedia/demo.php
+````
+
 ### blurOut 不足比例的视频/图片虚化
 ````php
 //处理为 1:1 的虚化图片
