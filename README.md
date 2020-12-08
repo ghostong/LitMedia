@@ -20,13 +20,17 @@ https://github.com/ghostong/help/blob/master/LitMedia/demo.php
 ### blurOut 不足比例的视频/图片虚化
 ````php
 //处理为 1:1 的虚化图片
-//示例: https://raw.githubusercontent.com/ghostong/help/master/LitMedia/image/blurOutImage.jpg
 (new Lit\Media\BlurOut("in.jpg"))->exec(1,1,"./out.jpg");
+````
+<img src="https://raw.githubusercontent.com/ghostong/help/master/LitMedia/image/blurOutImage.jpg" width="300" alt="图片虚化效果">
 
+
+````php
 //处理为 4:5 的虚化视频
-//示例: https://raw.githubusercontent.com/ghostong/help/master/LitMedia/image/blurOutVideo.jpg
 (new Lit\Media\BlurOut("in.mp4"))->exec(4,5,"./out.mp4");
 ````
+<img src="https://raw.githubusercontent.com/ghostong/help/master/LitMedia/image/blurOutVideo.jpg" width="300"  alt="视频虚化效果">
+
 
 ### 常见问题
 ##### The process has been signaled with signal "9"
